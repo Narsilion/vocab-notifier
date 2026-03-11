@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.darkcreation.vocab-notifier.german.hourly</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/python3</string>
+      <string>-m</string>
+      <string>app.cli</string>
+      <string>--profile</string>
+      <string>german</string>
+      <string>run-once</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PYTHONPATH</key>
+      <string>/Users/darkcreation/Documents/git_repos/vocab-notifier/src</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/darkcreation/Documents/git_repos/vocab-notifier</string>
+
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/vn.german.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/vn.german.stderr.log</string>
+  </dict>
+</plist>

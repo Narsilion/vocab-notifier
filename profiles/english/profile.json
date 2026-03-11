@@ -1,0 +1,11 @@
+{
+  "source_language_name": "English",
+  "source_language_code": "en-US",
+  "target_language_name": "English",
+  "db_path": "./profiles/english/vocab.db",
+  "default_csv_path": "./data/english.csv",
+  "detail_pages_dir": "./.generated-pages/english",
+  "render_translation": false,
+  "render_explanation": true,
+  "include_example": true
+}

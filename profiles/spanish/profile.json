@@ -1,0 +1,11 @@
+{
+  "source_language_name": "Spanish",
+  "source_language_code": "es-ES",
+  "target_language_name": "English",
+  "db_path": "./profiles/spanish/vocab.db",
+  "default_csv_path": "./data/spanish.csv",
+  "detail_pages_dir": "./.generated-pages/spanish",
+  "render_translation": true,
+  "render_explanation": true,
+  "include_example": true
+}

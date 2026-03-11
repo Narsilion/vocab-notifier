@@ -1,0 +1,6 @@
+term,display_prefix,translation_text,explanation_text,part_of_speech,example_source,example_target,tags,difficulty
+Haus,das,house,A building where people live.,noun,Das Haus ist alt.,The house is old.,home,1
+Wasser,das,water,A clear liquid for drinking.,noun,Ich trinke Wasser.,I drink water.,daily-life,1
+gehen,,to go,To move from one place to another.,verb,Wir gehen nach Hause.,We are going home.,verbs,1
+Buch,das,book,A written work with pages.,noun,Das Buch ist interessant.,The book is interesting.,study,1
+heute,,today,The current day.,adverb,Heute lerne ich Deutsch.,Today I study German.,time,1

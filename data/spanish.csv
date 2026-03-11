@@ -1,0 +1,6 @@
+term,display_prefix,translation_text,explanation_text,part_of_speech,example_source,example_target,tags,difficulty
+casa,la,house,A building where people live.,noun,La casa es grande.,The house is big.,home,1
+agua,el,water,A liquid used for drinking and cleaning.,noun,El agua esta fria.,The water is cold.,daily-life,1
+hablar,,to speak,To say words aloud.,verb,Hablo espanol con mi amiga.,I speak Spanish with my friend.,verbs,1
+hoy,,today,The current day.,adverb,Hoy estudio espanol.,Today I study Spanish.,time,1
+amigo,el,friend,A person you know well and like.,noun,Mi amigo vive aqui.,My friend lives here.,people,1

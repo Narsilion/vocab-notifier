@@ -1,0 +1,11 @@
+{
+  "source_language_name": "German",
+  "source_language_code": "de-DE",
+  "target_language_name": "English",
+  "db_path": "./profiles/german/vocab.db",
+  "default_csv_path": "./data/german.csv",
+  "detail_pages_dir": "./.generated-pages/german",
+  "render_translation": true,
+  "render_explanation": false,
+  "include_example": true
+}

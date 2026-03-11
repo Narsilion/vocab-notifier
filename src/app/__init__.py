@@ -1,0 +1,1 @@
+"""Vocab Notifier package."""
