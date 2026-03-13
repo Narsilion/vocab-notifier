@@ -38,8 +38,48 @@ Each profile has its own:
 cd /Users/darkcreation/Documents/git_repos/vocab-notifier
 python3 -m venv .venv
 source .venv/bin/activate
+pip install -e .
 cp .env.example .env
 ```
+
+## Moving to another laptop
+
+To move the German setup to another Mac:
+
+1. Copy or clone this repository to the new machine.
+2. Install Python 3.11+.
+3. Recreate the virtual environment and install the app:
+
+```bash
+cd /path/to/vocab-notifier
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+cp .env.example .env
+```
+
+4. Keep [profiles/german/profile.json](/Users/darkcreation/Documents/git_repos/vocab-notifier/profiles/german/profile.json) and [data/german.csv](/Users/darkcreation/Documents/git_repos/vocab-notifier/data/german.csv).
+5. Decide whether you want to keep your learning state:
+   - If yes, copy `profiles/german/vocab.db` from the old laptop.
+   - If no, create a fresh database and import the German CSV:
+
+```bash
+./vn --profile german init-db
+./vn --profile german import-csv
+```
+
+6. Verify the setup:
+
+```bash
+./vn --profile german run-once --dry-run
+./vn --profile german run-once
+```
+
+Notes:
+
+- `profiles/german/vocab.db` is local SQLite state and is not tracked by git.
+- `.env` is also local and should be recreated or copied if customized.
+- If you install the launchd job on the new laptop, update any absolute paths in [launchd/com.darkcreation.vocab-notifier.german.hourly.plist](/Users/darkcreation/Documents/git_repos/vocab-notifier/launchd/com.darkcreation.vocab-notifier.german.hourly.plist), especially `PYTHONPATH`, `WorkingDirectory`, and the Python binary path.
 
 ## Profiles
 
