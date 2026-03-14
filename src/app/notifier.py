@@ -33,10 +33,10 @@ def build_notification_payload(word: WordRecord, settings: Settings) -> tuple[st
 def send_notification(
     settings: Settings, title: str, subtitle: str, body: str, *, page_path: Path | None = None
 ) -> str:
-    if page_path is not None and _send_terminal_notification(title, subtitle, body, page_path):
-        return "terminal-notifier"
     if page_path is not None and _send_swift_notification(settings, title, subtitle, body, page_path):
         return "swift-helper"
+    if page_path is not None and _send_terminal_notification(title, subtitle, body, page_path):
+        return "terminal-notifier"
 
     full_body = f"{subtitle}\n{body}".strip() if subtitle else body
     result = subprocess.run(
