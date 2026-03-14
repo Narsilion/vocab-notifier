@@ -47,8 +47,11 @@ def test_write_word_page_includes_key_content(tmp_path: Path) -> None:
     html = page_path.read_text(encoding="utf-8")
     assert page_path.name == "das-haus.html"
     assert "das Haus" in html
+    assert "Card Meaning" in html
     assert "house" in html
+    assert "Example sentence" in html
     assert "Das Haus ist alt." in html
+    assert "Example translation" in html
     assert "The house is old." in html
     assert "A building" not in html
     assert 'id="pronounce-button"' in html

@@ -39,9 +39,23 @@ def _build_html(word: WordRecord, settings: Settings) -> str:
     if word.example_source or word.example_target:
         example_lines: list[str] = []
         if word.example_source:
-            example_lines.append(f"<p class=\"example-source\">{escape(word.example_source)}</p>")
+            example_lines.append(
+                f"""
+        <div class="example-entry">
+          <h3>Example sentence</h3>
+          <p class="example-source">{escape(word.example_source)}</p>
+        </div>
+                """
+            )
         if word.example_target:
-            example_lines.append(f"<p class=\"example-target\">{escape(word.example_target)}</p>")
+            example_lines.append(
+                f"""
+        <div class="example-entry example-entry-translation">
+          <h3>Example translation</h3>
+          <p class="example-target">{escape(word.example_target)}</p>
+        </div>
+                """
+            )
         example_block = f"""
       <section class="panel example-panel">
         <div class="panel-header">
@@ -254,8 +268,19 @@ def _build_html(word: WordRecord, settings: Settings) -> str:
         font-size: 28px;
       }}
 
+      .example-entry + .example-entry {{
+        margin-top: 16px;
+      }}
+
+      .example-entry h3 {{
+        margin: 0 0 6px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }}
+
       .example-target {{
-        margin-top: 10px !important;
         color: var(--muted);
       }}
 
@@ -316,7 +341,7 @@ def _build_html(word: WordRecord, settings: Settings) -> str:
           <p>{display_term}</p>
         </article>
         <article class="panel">
-          <h2>Meaning</h2>
+          <h2>Card Meaning</h2>
           <p>{meaning}</p>
         </article>
         {explanation_panel}

@@ -5,8 +5,8 @@ anvertrauen,,entrust,,,Ich werde mich dir anvertrauen.,I'm going to confide in y
 Anweisungen,,directions,,,Lest diese Anweisungen.,Read these instructions.,"bulk-import,tatoeba-example",,tatoeba:7448256
 anwenden,,apply,,,Nur äußerlich anwenden.,External application only.,"bulk-import,tatoeba-example",,tatoeba:6084407
 anwesend,,present,,,Sei anwesend.,Be there.,"bulk-import,tatoeba-example",,tatoeba:931990
-Anwesenheit,,presence,,,Die Lehrerin überprüfte die Anwesenheit.,The teacher called the roll.,"bulk-import,tatoeba-example",,tatoeba:10033240
-anziehen,,attract,,,Anziehen!,Get dressed!,"bulk-import,tatoeba-example",,tatoeba:6632261
+Anwesenheit,,attendance,,,Die Lehrerin überprüfte die Anwesenheit.,The teacher checked attendance.,"bulk-import,tatoeba-example",,tatoeba:10033240
+anziehen,,get dressed,,,Anziehen!,Get dressed!,"bulk-import,tatoeba-example",,tatoeba:6632261
 Anzug,,suit,,,Schöner Anzug.,Nice costume.,"bulk-import,tatoeba-example",,tatoeba:8295470
 anzünden,,light (irr.),,,Nicht die Kerze anzünden!,Don't light the candle.,"bulk-import,tatoeba-example",,tatoeba:4265707
 Apfel,,apple,,,Schäle den Apfel!,Peel the apple.,"bulk-import,tatoeba-example",,tatoeba:6398616
@@ -25,12 +25,12 @@ Arbeitslosigkeit,,unemployment,,,Die Arbeitslosigkeit wächst.,Unemployment is r
 Arbeitstag,,working-day,,,Wie war dein Arbeitstag?,How was your day at work?,"bulk-import,tatoeba-example",,tatoeba:10290207
 Argument,,argument,,,Gutes Argument.,Fair point.,"bulk-import,tatoeba-example",,tatoeba:12193539
 Argwohn,,suspicion,,,Solche Reden werden Argwohn hervorrufen.,Talk like that will raise suspicion.,"bulk-import,tatoeba-example",,tatoeba:3973199
-Arm,,arm,,,Armer Hund!,Poor dog.,"bulk-import,tatoeba-example",,tatoeba:12166239
+Arm,,arm,,,,,"bulk-import,tatoeba-example",,tatoeba:12166239
 Armbanduhr,,wristwatch,,,Tom trug eine Armbanduhr.,Tom was wearing a watch.,"bulk-import,tatoeba-example",,tatoeba:12465048
 Armut,,poverty,,,Armut führt zu Verbrechen.,Poverty leads to crime.,"bulk-import,tatoeba-example",,tatoeba:11015130
 Aroma,,flavour,,,Der Kaffee hat ein gutes Aroma.,The coffee has nice aroma.,"bulk-import,tatoeba-example",,tatoeba:12900972
 Arrest,,arrest,,,Steht Tom unter Arrest?,Is Tom under arrest?,"bulk-import,tatoeba-example",,tatoeba:4293417
-Art,,kind,,,Tom macht Martial Arts.,Tom practices martial arts.,"bulk-import,tatoeba-example",,tatoeba:5064324
+Art,,kind,,,,,"bulk-import,tatoeba-example",,tatoeba:5064324
 Artikel,,article,,,Lest den Artikel!,Read the article.,"bulk-import,tatoeba-example",,tatoeba:1799279
 Arzneimittel,,drug,,,Halte Kinder von Arzneimitteln fern.,Keep children away from medicine.,"bulk-import,tatoeba-example",,tatoeba:12457926
 Arzt,,physician,,,Ruf den Arzt!,Call the doctor!,"bulk-import,tatoeba-example",,tatoeba:13615294
@@ -41,24 +41,24 @@ Atem,,breath,,,Dein Atem stinkt.,Your breath stinks.,"bulk-import,tatoeba-exampl
 atmen,,breathe,,,Atmen Sie?,Are you breathing?,"bulk-import,tatoeba-example",,tatoeba:8861760
 Attraktion,,attraction,,,Dieses Fahrgeschäft ist die eigentliche Attraktion des Parks.,This ride is the park's real attraction.,"bulk-import,tatoeba-example",,tatoeba:2757504
 auch,,too (nachgestellt),,,Mir auch.,"Me, too.","bulk-import,tatoeba-example",,tatoeba:11329600
-auf,,up,,,Gebt auf!,Surrender!,"bulk-import,tatoeba-example",,tatoeba:10478282
+auf,,give up,,,Gebt auf!,Surrender!,"bulk-import,tatoeba-example",,tatoeba:10478282
 Aufbau,,structure,,,Die Eisenbahnstrecke befindet sich nun im Aufbau.,The railroad is now in the process of construction.,"bulk-import,tatoeba-example",,tatoeba:1916381
 aufbrechen,,start,,,Wir sollten aufbrechen.,We should be on our way.,"bulk-import,tatoeba-example",,tatoeba:8639153
-Aufenthalt,,stay,,,Er ist unbekannten Aufenthalts.,His whereabouts are unknown.,"bulk-import,tatoeba-example",,tatoeba:5018090
-aufführen,,perform,,,Du darfst dich nicht so aufführen.,You must not behave like this.,"bulk-import,tatoeba-example",,tatoeba:8052091
+Aufenthalt,,whereabouts,,,Er ist unbekannten Aufenthalts.,His whereabouts are unknown.,"bulk-import,tatoeba-example",,tatoeba:5018090
+aufführen,,behave,,,Du darfst dich nicht so aufführen.,You must not behave like this.,"bulk-import,tatoeba-example",,tatoeba:8052091
 auffüllen,,fill up,,,Soll ich dein Glas auffüllen?,Shall I fill your glass up?,"bulk-import,tatoeba-example",,tatoeba:2106809
-aufgegangen,,risen,,,Ihr Plan ist aufgegangen.,Your plan worked.,"bulk-import,tatoeba-example",,tatoeba:13541271
+aufgegangen,,worked out,,,Ihr Plan ist aufgegangen.,Your plan worked.,"bulk-import,tatoeba-example",,tatoeba:13541271
 aufgestanden,,risen,,,Ich bin aufgestanden.,I stood up.,"bulk-import,tatoeba-example",,tatoeba:12025987
 aufgewacht,,woken,,,Sie sind aufgewacht.,They're awake.,"bulk-import,tatoeba-example",,tatoeba:12317518
 aufgeweckt,,woken,,,Was hat dich aufgeweckt?,What woke you?,"bulk-import,tatoeba-example",,tatoeba:11185712
-aufhalten,,check,,,Sie will ihn aufhalten.,She wants to stop him.,"bulk-import,tatoeba-example",,tatoeba:13252458
+aufhalten,,stop,,,Sie will ihn aufhalten.,She wants to stop him.,"bulk-import,tatoeba-example",,tatoeba:13252458
 aufheben,,lift,,,Kannst du es aufheben?,Can you pick it up?,"bulk-import,tatoeba-example",,tatoeba:707050
 aufhören,,stop,,,Buh! Aufhören!,Shit! Stop!,"bulk-import,tatoeba-example",,tatoeba:6119592
 aufleuchten,,flash,,,"Betätige mal das Bremspedal, um die Bremslichter aufleuchten zu lassen.",Press the brake pedal to turn on your brake lights.,"bulk-import,tatoeba-example",,tatoeba:966138
 auflösen,,dissolve,,,Man muss es in Wasser auflösen.,It has to be dissolved in water.,"bulk-import,tatoeba-example",,tatoeba:7742895
-aufmerksam,,attentive,,,Sei aufmerksamer.,You have to try to stay awake.,"bulk-import,tatoeba-example",,tatoeba:13035096
+aufmerksam,,attentive,,,Sei aufmerksamer.,Be more attentive.,"bulk-import,tatoeba-example",,tatoeba:13035096
 Aufmerksamkeit,,attention,,,Tom möchte Aufmerksamkeit.,Tom wants attention.,"bulk-import,tatoeba-example",,tatoeba:12531257
-aufmuntern,,cheer,,,Tom war aufmunternd.,Tom was cheering.,"bulk-import,tatoeba-example",,tatoeba:6618883
+aufmuntern,,encourage,,,Tom war aufmunternd.,Tom was encouraging.,"bulk-import,tatoeba-example",,tatoeba:6618883
 aufrecht,,upright,,,Stehe aufrecht!,Stand up straight!,"bulk-import,tatoeba-example",,tatoeba:1915189
 aufrechterhalten,,maintain,,,Hast du den Kontakt aufrechterhalten?,Did you keep in touch?,"bulk-import,tatoeba-example",,tatoeba:1697523
 aufregen,,excite,,,Wie aufregend!,How thrilling!,"bulk-import,tatoeba-example",,tatoeba:4942803
@@ -72,7 +72,7 @@ Auftrag,,order,,,Dies ist Ihr erster Auftrag.,This is your first assignment.,"bu
 aufwachen,,wake (irr.),,,"Aufwachen, Liebes!","Wake up, dear.","bulk-import,tatoeba-example",,tatoeba:9199357
 aufwachsen,,grow up,,,Kinder sollten sorglos aufwachsen.,Children should grow up carefree.,"bulk-import,tatoeba-example",,tatoeba:12446821
 aufwecken,,wake (irr.),,,Nicht das Kind aufwecken!,Don't wake the baby up.,"bulk-import,tatoeba-example",,tatoeba:13732525
-aufwärts,,upwards,,,Aufwärts!,Jump.,"bulk-import,tatoeba-example",,tatoeba:6028208
+aufwärts,,upwards,,,,,"bulk-import,tatoeba-example",,tatoeba:6028208
 aufzeichnen,,record,,,Könntest du mir vielleicht eine Karte aufzeichnen?,Maybe you could draw me a map?,"bulk-import,tatoeba-example",,tatoeba:1536666
 Augapfel,,eye-ball,,,Diese goldene Uhr ist mein Augapfel. Mutter schenkte sie mir in ihren späteren Jahren als Andenken.,This gold watch is the apple of my eye. Mother gave it to me as a keep-sake in her later years.,"bulk-import,tatoeba-example",,tatoeba:636729
 Auge,,eye,,,Augen geradeaus!,Eyes front.,"bulk-import,tatoeba-example",,tatoeba:8641031
@@ -81,14 +81,14 @@ Augenbraue,,eyebrow,,,Deine Augenbrauen sind schön.,Your eyebrows are beautiful
 August,,August,,,Wir haben schon August.,It is already August.,"bulk-import,tatoeba-example",,tatoeba:11905776
 aus,,out,,,Atme aus.,Breathe out.,"bulk-import,tatoeba-example",,tatoeba:8861461
 ausbessern,,mend,,,"Schreibt mit Bleistift, damit ihr nachher, falls nötig, noch etwas mit dem Radiergummi ausbessern könnt.","Write with a pencil so that you can, if necessary, rub out what you've written.","bulk-import,tatoeba-example",,tatoeba:3697720
-ausbilden,,train,,,Ich will mich auf dieser Schule ausbilden lassen.,I want to study in that school.,"bulk-import,tatoeba-example",,tatoeba:7955677
+ausbilden,,study,,,Ich will mich auf dieser Schule ausbilden lassen.,I want to study in that school.,"bulk-import,tatoeba-example",,tatoeba:7955677
 Ausbildung,,training,,,Eure Ausbildung ist wichtig.,Your education is important.,"bulk-import,tatoeba-example",,tatoeba:8131959
 ausbreiten,,spread (irr.),,,Robbi kann seinen linken Flügel nicht mehr ausbreiten.,Bob can no longer unfurl its left wing.,"bulk-import,tatoeba-example",,tatoeba:11079932
 Ausbruch,,outbreak,,,Der Ausbruch schwärzte den Himmel.,The eruption blackened the skies.,"bulk-import,tatoeba-example",,tatoeba:9006934
 Ausdehnung,,extension,,,"Die Astronomen machten die überraschende Beobachtung, dass die Ausdehnung des Universums schneller wird.",The astronomers made the surprising discovery that the expansion of the universe is speeding up.,"bulk-import,tatoeba-example",,tatoeba:8717286
-Ausdruck,,print,,,Dieser Ausdruck wird übersetzt.,This expression gets translated.,"bulk-import,tatoeba-example",,tatoeba:13203070
+Ausdruck,,expression,,,Dieser Ausdruck wird übersetzt.,This expression gets translated.,"bulk-import,tatoeba-example",,tatoeba:13203070
 ausdrücken,,express,,,Ebendas wollte ich ausdrücken.,That's what I tried to express.,"bulk-import,tatoeba-example",,tatoeba:13076156
-Ausgabe,,issue,,,Tom kalkulierte seine Ausgaben.,Tom calculated his expenses.,"bulk-import,tatoeba-example",,tatoeba:11911371
+Ausgabe,,expenses,,,Tom kalkulierte seine Ausgaben.,Tom calculated his expenses.,"bulk-import,tatoeba-example",,tatoeba:11911371
 Ausgaben,,expense,,,Tom kalkulierte seine Ausgaben.,Tom calculated his expenses.,"bulk-import,tatoeba-example",,tatoeba:11911371
 Ausgang,,exit,,,Kein Ausgang!,There's no way out.,"bulk-import,tatoeba-example",,tatoeba:9165391
 ausgeben,,spend (irr.),,,Wir sollten kein Geld ausgeben.,We shouldn't spend money.,"bulk-import,tatoeba-example",,tatoeba:13311918
@@ -100,13 +100,13 @@ ausgeschaltet,,off,,,War Ihr Telefon ausgeschaltet?,Was your phone switched off?
 ausgezeichnet,,excellent,,,Ausgezeichnet!,Great!,"bulk-import,tatoeba-example",,tatoeba:850089
 Auskunft,,information,,,Wo ist die Auskunft?,Where's the information desk?,"bulk-import,tatoeba-example",,tatoeba:744364
 auslassen,,omit,,,Könnt ihr mich auslassen?,Can you skip me?,"bulk-import,tatoeba-example",,tatoeba:3730878
-Auslaß,,outlet,,,Könnt ihr mich auslassen?,Can you skip me?,"bulk-import,tatoeba-example",,tatoeba:3730878
+Auslaß,,outlet,,,,,"bulk-import,tatoeba-example",,tatoeba:3730878
 Ausländer,,foreigner,,,Seid ihr Ausländer?,Are you foreigners?,"bulk-import,tatoeba-example",,tatoeba:11002341
 ausländisch,,foreign,,,Ich sammle ausländische Münzen.,I collect foreign coins.,"bulk-import,tatoeba-example",,tatoeba:9159934
 Ausmaß,,extent,,,Welche Ausmaße hat das Zimmer?,What are the dimensions of the room?,"bulk-import,tatoeba-example",,tatoeba:2457741
 Ausnahme,,exception,,,Gibt es Ausnahmen?,Are there any exceptions?,"bulk-import,tatoeba-example",,tatoeba:13469938
 auspacken,,unpack,,,Ich möchte auspacken.,I'd like to unpack.,"bulk-import,tatoeba-example",,tatoeba:12500992
-Ausruf,,outcry,,,"""Ah!"" ist ein Ausruf.","""Ah!"" is an interjection.","bulk-import,tatoeba-example",,tatoeba:425
+Ausruf,,interjection,,,"""Ah!"" ist ein Ausruf.","""Ah!"" is an interjection.","bulk-import,tatoeba-example",,tatoeba:425
 ausrutschen,,slip,,,"Passen Sie auf, dass Sie nicht ausrutschen.",Be careful not to slip.,"bulk-import,tatoeba-example",,tatoeba:2993911
 ausschalten,,turn off,,,Nicht das Licht ausschalten!,Don't turn off the light.,"bulk-import,tatoeba-example",,tatoeba:12188498
 Ausschuss,,committee,,,Der Ausschuss hat zehn Mitglieder.,The committee has ten members.,"bulk-import,tatoeba-example",,tatoeba:2082897
@@ -114,8 +114,8 @@ ausschweifend,,gay,,,Sie führen ein ausschweifendes Leben.,They are leading a l
 Aussehen,,looks,,,Aussehen ist alles.,Looks are everything.,"bulk-import,tatoeba-example",,tatoeba:3222848
 Aussichtspunkt,,look-out,,,Der Hügel ist ein guter Aussichtspunkt.,The top of the hill is a good vantage point.,"bulk-import,tatoeba-example",,tatoeba:10503905
 Aussprache,,pronunciation,,,Verbessert bitte meine Aussprache!,Please correct my pronunciation.,"bulk-import,tatoeba-example",,tatoeba:13180162
-aussprechen,,pronounce,,,Lass ihn aussprechen.,Let him finish.,"bulk-import,tatoeba-example",,tatoeba:5907081
-ausstellen,,exhibit,,,Bitte ausstellen!,"Turn it off, please.","bulk-import,tatoeba-example",,tatoeba:5713518
+aussprechen,,finish speaking,,,Lass ihn aussprechen.,Let him finish.,"bulk-import,tatoeba-example",,tatoeba:5907081
+ausstellen,,turn off,,,Bitte ausstellen!,"Turn it off, please.","bulk-import,tatoeba-example",,tatoeba:5713518
 Ausstellung,,exhibition,,,Sie besichtigten die Ausstellung.,They saw the exhibit.,"bulk-import,tatoeba-example",,tatoeba:12925439
 Ausstoß,,output,,,Der Ausstoß dieser Fabrik hat sich um 20% erhöht.,The output of this factory has increased by 20%.,"bulk-import,tatoeba-example",,tatoeba:658415
 Austausch,,exchange,,,Möchtet ihr Links austauschen?,Would you like to exchange links?,"bulk-import,tatoeba-example",,tatoeba:2068721
