@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import os
 import subprocess
+import tempfile
+import time
 from pathlib import Path
 
 from app.config import Settings
@@ -11,6 +13,13 @@ from app.presentation import primary_meaning, secondary_explanation
 
 class NotificationError(RuntimeError):
     """Raised when a native macOS notification cannot be sent."""
+
+
+def _compact_error(stderr: str, returncode: int) -> str:
+    message = stderr.strip()
+    if message:
+        return f"exit={returncode} stderr={message}"
+    return f"exit={returncode}"
 
 
 def build_notification_payload(word: WordRecord, settings: Settings) -> tuple[str, str, str]:
@@ -33,8 +42,23 @@ def build_notification_payload(word: WordRecord, settings: Settings) -> tuple[st
 def send_notification(
     settings: Settings, title: str, subtitle: str, body: str, *, page_path: Path | None = None
 ) -> str:
-    if page_path is not None and _send_swift_notification(settings, title, subtitle, body, page_path):
-        return "swift-helper"
+    backend_errors: list[str] = []
+    if page_path is not None:
+        terminal_result = _send_terminal_notification(title, subtitle, body, page_path)
+        if terminal_result is True:
+            return "terminal-notifier"
+        if isinstance(terminal_result, str):
+            backend_errors.append(f"terminal-notifier: {terminal_result}")
+
+    if page_path is not None:
+        details = "; ".join(backend_errors) if backend_errors else "no backend details captured"
+        if _open_page_directly(page_path):
+            return "open-direct"
+        raise NotificationError(
+            "No clickable notification backend is available for study cards. "
+            f"{details}; direct page open also failed"
+        )
+
     if page_path is not None and _send_terminal_notification(title, subtitle, body, page_path):
         return "terminal-notifier"
 
@@ -45,7 +69,11 @@ def send_notification(
             "-e",
             "on run argv",
             "-e",
-            "display notification (item 2 of argv) with title (item 1 of argv)",
+            "set notificationTitle to item 1 of argv",
+            "-e",
+            "set notificationBody to item 2 of argv",
+            "-e",
+            "display notification notificationBody with title notificationTitle",
             "-e",
             "end run",
             "--",
@@ -61,7 +89,7 @@ def send_notification(
     return "osascript"
 
 
-def _send_terminal_notification(title: str, subtitle: str, body: str, page_path: Path) -> bool:
+def _send_terminal_notification(title: str, subtitle: str, body: str, page_path: Path) -> bool | str:
     notifier_path = "/usr/local/bin/terminal-notifier"
     if not Path(notifier_path).exists():
         return False
@@ -77,21 +105,25 @@ def _send_terminal_notification(title: str, subtitle: str, body: str, page_path:
         subtitle or "",
         "-open",
         page_url,
-        "-actions",
-        "Open Card",
         "-group",
         f"vn-{page_path.stem}",
     ]
-    result = subprocess.run(command, capture_output=True, text=True, check=False)
-    return result.returncode == 0
+    errors: list[str] = []
+    for _ in range(3):
+        result = subprocess.run(command, capture_output=True, text=True, check=False)
+        if result.returncode == 0:
+            return True
+        errors.append(_compact_error(result.stderr, result.returncode))
+        time.sleep(0.4)
+    return " | ".join(errors)
 
 
 def _send_swift_notification(
     settings: Settings, title: str, subtitle: str, body: str, page_path: Path
-) -> bool:
+) -> bool | str:
     helper_binary = _ensure_swift_helper_binary(settings)
     if helper_binary is None:
-        return False
+        return "helper binary unavailable"
 
     try:
         subprocess.Popen(
@@ -107,8 +139,21 @@ def _send_swift_notification(
             start_new_session=True,
         )
     except OSError:
-        return False
+        return "failed to launch helper binary"
     return True
+
+
+def _open_page_directly(page_path: Path) -> bool:
+    try:
+        result = subprocess.run(
+            ["open", str(page_path)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError:
+        return False
+    return result.returncode == 0
 
 
 def _ensure_swift_helper_binary(settings: Settings) -> Path | None:
@@ -120,8 +165,7 @@ def _ensure_swift_helper_binary(settings: Settings) -> Path | None:
     if helper_binary.exists() and helper_binary.stat().st_mtime >= helper_source.stat().st_mtime:
         return helper_binary
 
-    module_cache = build_dir / "clang-module-cache"
-    module_cache.mkdir(parents=True, exist_ok=True)
+    module_cache = Path(tempfile.mkdtemp(prefix="clang-module-cache-", dir=build_dir))
     try:
         result = subprocess.run(
             [
@@ -134,7 +178,7 @@ def _ensure_swift_helper_binary(settings: Settings) -> Path | None:
             capture_output=True,
             text=True,
             check=False,
-            timeout=15,
+            timeout=60,
             env={
                 "CLANG_MODULE_CACHE_PATH": str(module_cache),
                 **os.environ,

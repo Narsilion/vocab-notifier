@@ -43,13 +43,13 @@ Attraktion,,attraction,,,Dieses Fahrgeschäft ist die eigentliche Attraktion des
 auch,,too (nachgestellt),,,Mir auch.,"Me, too.","bulk-import,tatoeba-example",,tatoeba:11329600
 auf,,give up,,,Gebt auf!,Surrender!,"bulk-import,tatoeba-example",,tatoeba:10478282
 Aufbau,,structure,,,Die Eisenbahnstrecke befindet sich nun im Aufbau.,The railroad is now in the process of construction.,"bulk-import,tatoeba-example",,tatoeba:1916381
-aufbrechen,,start,,,Wir sollten aufbrechen.,We should be on our way.,"bulk-import,tatoeba-example",,tatoeba:8639153
+aufbrechen,,set off,,,Wir sollten aufbrechen.,We should be on our way.,"bulk-import,tatoeba-example",,tatoeba:8639153
 Aufenthalt,,whereabouts,,,Er ist unbekannten Aufenthalts.,His whereabouts are unknown.,"bulk-import,tatoeba-example",,tatoeba:5018090
 aufführen,,behave,,,Du darfst dich nicht so aufführen.,You must not behave like this.,"bulk-import,tatoeba-example",,tatoeba:8052091
 auffüllen,,fill up,,,Soll ich dein Glas auffüllen?,Shall I fill your glass up?,"bulk-import,tatoeba-example",,tatoeba:2106809
 aufgegangen,,worked out,,,Ihr Plan ist aufgegangen.,Your plan worked.,"bulk-import,tatoeba-example",,tatoeba:13541271
-aufgestanden,,risen,,,Ich bin aufgestanden.,I stood up.,"bulk-import,tatoeba-example",,tatoeba:12025987
-aufgewacht,,woken,,,Sie sind aufgewacht.,They're awake.,"bulk-import,tatoeba-example",,tatoeba:12317518
+aufgestanden,,got up,,,Ich bin aufgestanden.,I stood up.,"bulk-import,tatoeba-example",,tatoeba:12025987
+aufgewacht,,awake,,,Sie sind aufgewacht.,They're awake.,"bulk-import,tatoeba-example",,tatoeba:12317518
 aufgeweckt,,woken,,,Was hat dich aufgeweckt?,What woke you?,"bulk-import,tatoeba-example",,tatoeba:11185712
 aufhalten,,stop,,,Sie will ihn aufhalten.,She wants to stop him.,"bulk-import,tatoeba-example",,tatoeba:13252458
 aufheben,,lift,,,Kannst du es aufheben?,Can you pick it up?,"bulk-import,tatoeba-example",,tatoeba:707050
@@ -61,10 +61,10 @@ Aufmerksamkeit,,attention,,,Tom möchte Aufmerksamkeit.,Tom wants attention.,"bu
 aufmuntern,,encourage,,,Tom war aufmunternd.,Tom was encouraging.,"bulk-import,tatoeba-example",,tatoeba:6618883
 aufrecht,,upright,,,Stehe aufrecht!,Stand up straight!,"bulk-import,tatoeba-example",,tatoeba:1915189
 aufrechterhalten,,maintain,,,Hast du den Kontakt aufrechterhalten?,Did you keep in touch?,"bulk-import,tatoeba-example",,tatoeba:1697523
-aufregen,,excite,,,Wie aufregend!,How thrilling!,"bulk-import,tatoeba-example",,tatoeba:4942803
+aufregen,,excite,,,,,"bulk-import,tatoeba-example",,tatoeba:4942803
 aufregend,,exciting,,,Wie aufregend!,How thrilling!,"bulk-import,tatoeba-example",,tatoeba:4942803
 Aufregung,,excitement,,,Warum diese Aufregung?,Why all the commotion?,"bulk-import,tatoeba-example",,tatoeba:2811188
-aufrichtig,,truly,,,Er war aufrichtig.,He was frank.,"bulk-import,tatoeba-example",,tatoeba:9985189
+aufrichtig,,frank,,,Er war aufrichtig.,He was frank.,"bulk-import,tatoeba-example",,tatoeba:9985189
 Aufschrei,,outcry,,,Der Richterspruch führte zu einem Aufschrei.,The judge's decision caused an uproar.,"bulk-import,tatoeba-example",,tatoeba:12362775
 aufstehen,,stand up,,,Aufstehen!,Stand up!,"bulk-import,tatoeba-example",,tatoeba:7188587
 aufteilen,,split (irr.),,,Wir müssen uns aufteilen.,We have to split.,"bulk-import,tatoeba-example",,tatoeba:3145244
@@ -74,7 +74,7 @@ aufwachsen,,grow up,,,Kinder sollten sorglos aufwachsen.,Children should grow up
 aufwecken,,wake (irr.),,,Nicht das Kind aufwecken!,Don't wake the baby up.,"bulk-import,tatoeba-example",,tatoeba:13732525
 aufwärts,,upwards,,,,,"bulk-import,tatoeba-example",,tatoeba:6028208
 aufzeichnen,,record,,,Könntest du mir vielleicht eine Karte aufzeichnen?,Maybe you could draw me a map?,"bulk-import,tatoeba-example",,tatoeba:1536666
-Augapfel,,eye-ball,,,Diese goldene Uhr ist mein Augapfel. Mutter schenkte sie mir in ihren späteren Jahren als Andenken.,This gold watch is the apple of my eye. Mother gave it to me as a keep-sake in her later years.,"bulk-import,tatoeba-example",,tatoeba:636729
+Augapfel,,eye-ball,,,,,"bulk-import,tatoeba-example",,tatoeba:636729
 Auge,,eye,,,Augen geradeaus!,Eyes front.,"bulk-import,tatoeba-example",,tatoeba:8641031
 Augenblick,,moment,,,Augenblick...,Just a moment ...,"bulk-import,tatoeba-example",,tatoeba:5445702
 Augenbraue,,eyebrow,,,Deine Augenbrauen sind schön.,Your eyebrows are beautiful.,"bulk-import,tatoeba-example",,tatoeba:12183775
@@ -89,13 +89,13 @@ Ausdehnung,,extension,,,"Die Astronomen machten die überraschende Beobachtung, 
 Ausdruck,,expression,,,Dieser Ausdruck wird übersetzt.,This expression gets translated.,"bulk-import,tatoeba-example",,tatoeba:13203070
 ausdrücken,,express,,,Ebendas wollte ich ausdrücken.,That's what I tried to express.,"bulk-import,tatoeba-example",,tatoeba:13076156
 Ausgabe,,expenses,,,Tom kalkulierte seine Ausgaben.,Tom calculated his expenses.,"bulk-import,tatoeba-example",,tatoeba:11911371
-Ausgaben,,expense,,,Tom kalkulierte seine Ausgaben.,Tom calculated his expenses.,"bulk-import,tatoeba-example",,tatoeba:11911371
+Ausgaben,,expenses,,,Tom kalkulierte seine Ausgaben.,Tom calculated his expenses.,"bulk-import,tatoeba-example",,tatoeba:11911371
 Ausgang,,exit,,,Kein Ausgang!,There's no way out.,"bulk-import,tatoeba-example",,tatoeba:9165391
 ausgeben,,spend (irr.),,,Wir sollten kein Geld ausgeben.,We shouldn't spend money.,"bulk-import,tatoeba-example",,tatoeba:13311918
 ausgebreitet,,spread,,,Wie hat sich der Islam ausgebreitet?,How did Islam spread?,"bulk-import,tatoeba-example",,tatoeba:12448621
-ausgegeben,,spent,,,Ich habe nichts ausgegeben.,I didn't hand out anything.,"bulk-import,tatoeba-example",,tatoeba:4193288
+ausgegeben,,spent,,,Ich habe nichts ausgegeben.,I didn't spend anything.,"bulk-import,tatoeba-example",,tatoeba:4193288
 ausgehen,,go out,,,Lass uns ausgehen!,Let's go out.,"bulk-import,tatoeba-example",,tatoeba:9998543
-ausgeliehen,,lent,,,Ich habe es ausgeliehen!,I borrowed it!,"bulk-import,tatoeba-example",,tatoeba:5103458
+ausgeliehen,,borrowed,,,Ich habe es ausgeliehen!,I borrowed it!,"bulk-import,tatoeba-example",,tatoeba:5103458
 ausgeschaltet,,off,,,War Ihr Telefon ausgeschaltet?,Was your phone switched off?,"bulk-import,tatoeba-example",,tatoeba:13757648
 ausgezeichnet,,excellent,,,Ausgezeichnet!,Great!,"bulk-import,tatoeba-example",,tatoeba:850089
 Auskunft,,information,,,Wo ist die Auskunft?,Where's the information desk?,"bulk-import,tatoeba-example",,tatoeba:744364

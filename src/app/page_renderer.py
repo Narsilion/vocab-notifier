@@ -36,7 +36,7 @@ def _build_html(word: WordRecord, settings: Settings) -> str:
         """
 
     example_block = ""
-    if word.example_source or word.example_target:
+    if _should_render_example(word):
         example_lines: list[str] = []
         if word.example_source:
             example_lines.append(
@@ -428,6 +428,20 @@ def _build_html(word: WordRecord, settings: Settings) -> str:
 
 def _chip(value: str) -> str:
     return f"<span class=\"chip\">{escape(value)}</span>"
+
+
+def _should_render_example(word: WordRecord) -> bool:
+    if not (word.example_source or word.example_target):
+        return False
+    if _is_heuristic_example(word):
+        return False
+    return True
+
+
+def _is_heuristic_example(word: WordRecord) -> bool:
+    tags = (word.tags or "").lower()
+    source = (word.source or "").lower()
+    return "heuristic-enrichment" in tags or "heuristic-enrichment" in source
 
 
 def _slugify(value: str) -> str:
