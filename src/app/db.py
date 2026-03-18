@@ -4,7 +4,7 @@ import sqlite3
 from datetime import UTC, datetime
 from pathlib import Path
 
-from app.models import WordRecord
+from app.models import PendingNotification, WordRecord
 
 
 SCHEMA = """
@@ -33,6 +33,14 @@ CREATE TABLE IF NOT EXISTS notification_log (
   shown_at TEXT NOT NULL,
   status TEXT NOT NULL,
   message TEXT,
+  FOREIGN KEY (card_id) REFERENCES cards(id)
+);
+
+CREATE TABLE IF NOT EXISTS pending_notifications (
+  profile_name TEXT PRIMARY KEY,
+  card_id INTEGER NOT NULL,
+  page_path TEXT,
+  shown_at TEXT NOT NULL,
   FOREIGN KEY (card_id) REFERENCES cards(id)
 );
 """
@@ -133,6 +141,20 @@ def fetch_any_active_words(connection: sqlite3.Connection) -> list[WordRecord]:
     return [_row_to_word(row) for row in rows]
 
 
+def fetch_word_by_id(connection: sqlite3.Connection, word_id: int) -> WordRecord | None:
+    row = connection.execute(
+        """
+        SELECT *
+        FROM cards
+        WHERE id = ?
+        """,
+        (word_id,),
+    ).fetchone()
+    if row is None:
+        return None
+    return _row_to_word(row)
+
+
 def record_notification_result(
     connection: sqlite3.Connection, word_id: int, status: str, message: str | None = None
 ) -> None:
@@ -161,6 +183,64 @@ def mark_word_shown(connection: sqlite3.Connection, word_id: int) -> None:
     connection.commit()
 
 
+def fetch_pending_notification(
+    connection: sqlite3.Connection, profile_name: str
+) -> PendingNotification | None:
+    row = connection.execute(
+        """
+        SELECT profile_name, card_id, page_path, shown_at
+        FROM pending_notifications
+        WHERE profile_name = ?
+        """,
+        (profile_name,),
+    ).fetchone()
+    if row is None:
+        return None
+    return PendingNotification(
+        profile_name=row["profile_name"],
+        card_id=row["card_id"],
+        page_path=row["page_path"],
+        shown_at=row["shown_at"],
+    )
+
+
+def set_pending_notification(
+    connection: sqlite3.Connection,
+    profile_name: str,
+    *,
+    card_id: int,
+    page_path: str | None = None,
+) -> None:
+    shown_at = _now()
+    connection.execute(
+        """
+        INSERT INTO pending_notifications (profile_name, card_id, page_path, shown_at)
+        VALUES (?, ?, ?, ?)
+        ON CONFLICT(profile_name) DO UPDATE SET
+          card_id = excluded.card_id,
+          page_path = excluded.page_path,
+          shown_at = excluded.shown_at
+        """,
+        (profile_name, card_id, page_path, shown_at),
+    )
+    connection.commit()
+
+
+def acknowledge_pending_notification(
+    connection: sqlite3.Connection, profile_name: str, card_id: int
+) -> bool:
+    cursor = connection.execute(
+        """
+        DELETE FROM pending_notifications
+        WHERE profile_name = ?
+          AND card_id = ?
+        """,
+        (profile_name, card_id),
+    )
+    connection.commit()
+    return cursor.rowcount > 0
+
+
 def get_stats(connection: sqlite3.Connection) -> dict[str, int]:
     total_words = connection.execute("SELECT COUNT(*) FROM cards").fetchone()[0]
     active_words = connection.execute("SELECT COUNT(*) FROM cards WHERE is_active = 1").fetchone()[0]
@@ -168,15 +248,23 @@ def get_stats(connection: sqlite3.Connection) -> dict[str, int]:
     notifications_sent = connection.execute(
         "SELECT COUNT(*) FROM notification_log WHERE status = 'sent'"
     ).fetchone()[0]
+    notifications_acknowledged = connection.execute(
+        "SELECT COUNT(*) FROM notification_log WHERE status = 'acknowledged'"
+    ).fetchone()[0]
     notification_failures = connection.execute(
         "SELECT COUNT(*) FROM notification_log WHERE status = 'failed'"
+    ).fetchone()[0]
+    pending_notifications = connection.execute(
+        "SELECT COUNT(*) FROM pending_notifications"
     ).fetchone()[0]
     return {
         "total_cards": total_words,
         "active_cards": active_words,
         "shown_cards": shown_words,
         "notifications_sent": notifications_sent,
+        "notifications_acknowledged": notifications_acknowledged,
         "notification_failures": notification_failures,
+        "pending_notifications": pending_notifications,
     }
 
 

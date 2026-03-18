@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import os
+import shlex
 import subprocess
-import tempfile
 import time
 from pathlib import Path
 
@@ -40,9 +40,41 @@ def build_notification_payload(word: WordRecord, settings: Settings) -> tuple[st
 
 
 def send_notification(
-    settings: Settings, title: str, subtitle: str, body: str, *, page_path: Path | None = None
+    settings: Settings,
+    title: str,
+    subtitle: str,
+    body: str,
+    *,
+    page_path: Path | None = None,
+    click_command: str | None = None,
 ) -> str:
     backend_errors: list[str] = []
+    if click_command and page_path is not None:
+        swift_result = _send_swift_notification(
+            settings,
+            title,
+            subtitle,
+            body,
+            page_path,
+            click_command=click_command,
+        )
+        if swift_result is True:
+            return "swift-helper-execute"
+        if isinstance(swift_result, str):
+            backend_errors.append(f"swift-helper: {swift_result}")
+
+        terminal_result = _send_terminal_notification(
+            title,
+            subtitle,
+            body,
+            page_path,
+            click_command=click_command,
+        )
+        if terminal_result is True:
+            return "terminal-notifier-execute"
+        if isinstance(terminal_result, str):
+            backend_errors.append(f"terminal-notifier: {terminal_result}")
+
     if page_path is not None:
         terminal_result = _send_terminal_notification(title, subtitle, body, page_path)
         if terminal_result is True:
@@ -50,20 +82,8 @@ def send_notification(
         if isinstance(terminal_result, str):
             backend_errors.append(f"terminal-notifier: {terminal_result}")
 
-    if page_path is not None:
-        details = "; ".join(backend_errors) if backend_errors else "no backend details captured"
-        if _open_page_directly(page_path):
-            return "open-direct"
-        raise NotificationError(
-            "No clickable notification backend is available for study cards. "
-            f"{details}; direct page open also failed"
-        )
-
-    if page_path is not None and _send_terminal_notification(title, subtitle, body, page_path):
-        return "terminal-notifier"
-
     full_body = f"{subtitle}\n{body}".strip() if subtitle else body
-    result = subprocess.run(
+    osascript_result = subprocess.run(
         [
             "osascript",
             "-e",
@@ -84,17 +104,56 @@ def send_notification(
         text=True,
         check=False,
     )
-    if result.returncode != 0:
-        raise NotificationError(result.stderr.strip() or "osascript failed")
-    return "osascript"
+    if osascript_result.returncode == 0:
+        return "osascript"
+    backend_errors.append(f"osascript: {_compact_error(osascript_result.stderr, osascript_result.returncode)}")
+
+    if page_path is not None and click_command is None:
+        details = "; ".join(backend_errors) if backend_errors else "no backend details captured"
+        if _open_page_directly(page_path):
+            return "open-direct"
+        raise NotificationError(
+            "No native notification backend is available for study cards. "
+            f"{details}; direct page open also failed"
+        )
+    raise NotificationError("; ".join(backend_errors) if backend_errors else "notification send failed")
 
 
-def _send_terminal_notification(title: str, subtitle: str, body: str, page_path: Path) -> bool | str:
+def build_acknowledgement_command(
+    settings: Settings, *, card_id: int, page_path: Path
+) -> str:
+    launcher_path = settings.project_root / "vn"
+    return " ".join(
+        [
+            shlex.quote(str(launcher_path)),
+            "--profile",
+            shlex.quote(settings.profile_name),
+            "ack-notification",
+            "--card-id",
+            str(card_id),
+            "--page-path",
+            shlex.quote(str(page_path)),
+        ]
+    )
+
+
+def open_page(page_path: Path) -> None:
+    if not _open_page_directly(page_path):
+        raise NotificationError(f"Failed to open study page: {page_path}")
+
+
+def _send_terminal_notification(
+    title: str,
+    subtitle: str,
+    body: str,
+    page_path: Path,
+    *,
+    click_command: str | None = None,
+) -> bool | str:
     notifier_path = "/usr/local/bin/terminal-notifier"
     if not Path(notifier_path).exists():
         return False
 
-    page_url = page_path.resolve().as_uri()
     command = [
         notifier_path,
         "-title",
@@ -103,11 +162,13 @@ def _send_terminal_notification(title: str, subtitle: str, body: str, page_path:
         body or subtitle or "Open the study card.",
         "-subtitle",
         subtitle or "",
-        "-open",
-        page_url,
         "-group",
         f"vn-{page_path.stem}",
     ]
+    if click_command:
+        command.extend(["-execute", click_command])
+    else:
+        command.extend(["-open", page_path.resolve().as_uri()])
     errors: list[str] = []
     for _ in range(3):
         result = subprocess.run(command, capture_output=True, text=True, check=False)
@@ -119,27 +180,46 @@ def _send_terminal_notification(title: str, subtitle: str, body: str, page_path:
 
 
 def _send_swift_notification(
-    settings: Settings, title: str, subtitle: str, body: str, page_path: Path
+    settings: Settings,
+    title: str,
+    subtitle: str,
+    body: str,
+    page_path: Path,
+    *,
+    click_command: str | None = None,
 ) -> bool | str:
-    helper_binary = _ensure_swift_helper_binary(settings)
-    if helper_binary is None:
-        return "helper binary unavailable"
+    helper_source = settings.project_root / "src" / "macos" / "NotificationDetailHelper.swift"
+    swift_path = _find_swift_executable()
+    if swift_path is None:
+        return "swift executable unavailable"
+    build_dir = settings.project_root / ".generated-bin"
+    build_dir.mkdir(parents=True, exist_ok=True)
+    module_cache = build_dir / "swift-module-cache"
+    module_cache.mkdir(parents=True, exist_ok=True)
+    helper_log_path = Path("/tmp") / f"vn.{settings.profile_name}.swift-helper.log"
 
     try:
+        log_handle = helper_log_path.open("a", encoding="utf-8")
         subprocess.Popen(
             [
-                str(helper_binary),
+                swift_path,
+                str(helper_source),
                 title,
                 subtitle,
                 body,
                 str(page_path),
+                *( [click_command] if click_command else [] ),
             ],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            stdout=log_handle,
+            stderr=log_handle,
             start_new_session=True,
+            env={
+                **os.environ,
+                "CLANG_MODULE_CACHE_PATH": str(module_cache),
+            },
         )
     except OSError:
-        return "failed to launch helper binary"
+        return "failed to launch swift helper"
     return True
 
 
@@ -156,36 +236,8 @@ def _open_page_directly(page_path: Path) -> bool:
     return result.returncode == 0
 
 
-def _ensure_swift_helper_binary(settings: Settings) -> Path | None:
-    helper_source = settings.project_root / "src" / "macos" / "NotificationDetailHelper.swift"
-    build_dir = settings.project_root / ".generated-bin"
-    build_dir.mkdir(parents=True, exist_ok=True)
-    helper_binary = build_dir / "notification-detail-helper"
-
-    if helper_binary.exists() and helper_binary.stat().st_mtime >= helper_source.stat().st_mtime:
-        return helper_binary
-
-    module_cache = Path(tempfile.mkdtemp(prefix="clang-module-cache-", dir=build_dir))
-    try:
-        result = subprocess.run(
-            [
-                "swiftc",
-                "-O",
-                str(helper_source),
-                "-o",
-                str(helper_binary),
-            ],
-            capture_output=True,
-            text=True,
-            check=False,
-            timeout=60,
-            env={
-                "CLANG_MODULE_CACHE_PATH": str(module_cache),
-                **os.environ,
-            },
-        )
-    except (OSError, subprocess.TimeoutExpired):
-        return None
-    if result.returncode != 0:
-        return None
-    return helper_binary
+def _find_swift_executable() -> str | None:
+    for candidate in ("/usr/bin/swift", "/Library/Developer/CommandLineTools/usr/bin/swift"):
+        if Path(candidate).exists():
+            return candidate
+    return None

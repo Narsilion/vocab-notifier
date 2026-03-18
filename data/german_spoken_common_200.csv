@@ -1,0 +1,201 @@
+term,display_prefix,translation_text,explanation_text,part_of_speech,example_source,example_target,tags,difficulty
+ich,,I,Pronoun for the speaker.,pronoun,Ich bin heute hier.,I am here today.,spoken-common-pronoun,1
+du,,you,Pronoun for one person you know well.,pronoun,Du kommst spaeter.,You are coming later.,spoken-common-pronoun,1
+wir,,we,Pronoun for the speaker and others.,pronoun,Wir gehen zusammen.,We are going together.,spoken-common-pronoun,1
+er,,he,Pronoun for one male person.,pronoun,Er arbeitet heute.,He is working today.,spoken-common-pronoun,1
+sie,,she,Pronoun for one female person.,pronoun,Sie kommt morgen.,She is coming tomorrow.,spoken-common-pronoun,1
+es,,it,Pronoun for a thing or general situation.,pronoun,Es ist schon spaet.,It is already late.,spoken-common-pronoun,1
+man,,one,Pronoun for people in general.,pronoun,Man lernt mit der Zeit.,One learns with time.,spoken-common-pronoun,2
+ja,,yes,Used to agree or confirm.,particle,Ja das stimmt.,Yes that is correct.,spoken-common-particle,1
+nein,,no,Used to disagree or refuse.,particle,Nein heute nicht.,No not today.,spoken-common-particle,1
+nicht,,not,Used to negate something.,particle,Ich komme heute nicht.,I am not coming today.,spoken-common-particle,1
+der,,the,Masculine definite article.,article,Der Bus kommt jetzt.,The bus is coming now.,spoken-common-article,1
+die,,the,Feminine or plural definite article.,article,Die Frau lacht.,The woman is laughing.,spoken-common-article,1
+das,,the,Neuter definite article.,article,Das Kind spielt.,The child is playing.,spoken-common-article,1
+ein,,a,Masculine or neuter indefinite article.,article,Ich habe ein Buch.,I have a book.,spoken-common-article,1
+eine,,a,Feminine indefinite article.,article,Sie hat eine Frage.,She has a question.,spoken-common-article,1
+und,,and,Connects words or ideas.,conjunction,Ich trinke Kaffee und Wasser.,I drink coffee and water.,spoken-common-conjunction,1
+in,,in,Preposition for being inside something.,preposition,Ich bin in der Stadt.,I am in the city.,spoken-common-preposition,1
+zu,,to,Preposition or particle for direction or purpose.,preposition,Ich gehe zur Arbeit zu Fuss.,I go to work on foot.,spoken-common-preposition,1
+mit,,with,Preposition for being together with someone or something.,preposition,Ich komme mit dir.,I am coming with you.,spoken-common-preposition,1
+auf,,on,Preposition for position on top of something.,preposition,Das Buch liegt auf dem Tisch.,The book is lying on the table.,spoken-common-preposition,1
+fuer,,for,Preposition for purpose or benefit.,preposition,Das ist fuer dich.,That is for you.,spoken-common-preposition,1
+von,,from,Preposition for origin or source.,preposition,Ich komme von der Schule.,I am coming from school.,spoken-common-preposition,1
+aus,,out of,Preposition for origin or movement from inside.,preposition,Er kommt aus Berlin.,He comes from Berlin.,spoken-common-preposition,1
+aber,,but,Connects a contrast.,conjunction,Ich bin muede aber froh.,I am tired but happy.,spoken-common-conjunction,1
+auch,,also,Adds another idea or item.,adverb,Ich komme auch morgen.,I am also coming tomorrow.,spoken-common-adverb,1
+so,,so,Used to point to degree or manner.,adverb,Das ist so einfach.,That is so easy.,spoken-common-adverb,1
+jetzt,,now,At this moment.,adverb,Ich gehe jetzt.,I am going now.,spoken-common-time,1
+hier,,here,In this place.,adverb,Wir warten hier.,We are waiting here.,spoken-common-place,1
+heute,,today,The current day.,adverb,Heute lerne ich Deutsch.,Today I study German.,spoken-common,1
+morgen,,tomorrow,The day after today.,adverb,Morgen arbeite ich nicht.,Tomorrow I am not working.,spoken-common-time,1
+mein,,my,Possessive word for something belonging to me.,determiner,Das ist mein Platz.,That is my seat.,spoken-common-determiner,1
+dein,,your,Possessive word for something belonging to you.,determiner,Ist das dein Auto?,Is that your car?,spoken-common-determiner,1
+wenn,,if,Introduces a condition or repeated time.,conjunction,Wenn ich Zeit habe komme ich.,If I have time I will come.,spoken-common-conjunction,1
+weil,,because,Introduces a reason.,conjunction,Ich bleibe zu Hause weil ich muede bin.,I am staying home because I am tired.,spoken-common-conjunction,1
+dass,,that,Introduces a subordinate clause.,conjunction,Ich weiss dass du recht hast.,I know that you are right.,spoken-common-conjunction,2
+oder,,or,Offers an alternative.,conjunction,Willst du Tee oder Kaffee?,Do you want tea or coffee?,spoken-common-conjunction,1
+denn,,because,Gives a reason in main clause word order.,conjunction,Ich gehe denn es ist spaet.,I am leaving because it is late.,spoken-common-conjunction,2
+als,,as,Used for comparison or past one time events.,conjunction,Als Kind wohnte ich hier.,As a child I lived here.,spoken-common-conjunction,2
+obwohl,,although,Introduces a contrast.,conjunction,Ich komme obwohl ich muede bin.,I am coming although I am tired.,spoken-common-conjunction,2
+kein,,no,Negates a noun.,article,Ich habe heute kein Geld.,I have no money today.,spoken-common-article,1
+sehr,,very,Used to make something stronger.,adverb,Das ist sehr gut.,That is very good.,spoken-common-adverb,1
+mehr,,more,A larger amount or number.,adverb,Ich brauche mehr Zeit.,I need more time.,spoken-common-adverb,1
+wenig,,little,A small amount.,determiner,Ich habe nur wenig Zeit.,I only have little time.,spoken-common-determiner,1
+schon,,already,Earlier than expected or by now.,adverb,Ich bin schon da.,I am already there.,spoken-common-adverb,1
+noch,,still,Up to now or in addition.,adverb,Bist du noch hier?,Are you still here?,spoken-common-adverb,1
+wieder,,again,One more time.,adverb,Sag das bitte wieder.,Please say that again.,spoken-common-adverb,1
+gleich,,soon,In a very short time.,adverb,Ich komme gleich.,I will be right there.,spoken-common-adverb,1
+nur,,only,No more than this.,adverb,Ich habe nur eine Frage.,I only have one question.,spoken-common-adverb,1
+wirklich,,really,Used to emphasize that something is true.,adverb,Das ist wirklich wichtig.,That is really important.,spoken-common-adverb,1
+vielleicht,,maybe,Shows uncertainty.,adverb,Vielleicht komme ich spaeter.,Maybe I will come later.,spoken-common-adverb,1
+doch,,after all,Used for contradiction or emphasis.,particle,Komm doch mit.,Come along after all.,spoken-common-particle,2
+mal,,once,Common particle that softens a request.,particle,Warte mal kurz.,Wait a second.,spoken-common-particle,1
+bitte,,please,Polite word for requests.,particle,Komm bitte jetzt.,Please come now.,spoken-common-politeness,1
+danke,,thanks,Used to express thanks.,particle,Danke fuer deine Hilfe.,Thanks for your help.,spoken-common-politeness,1
+gerne,,gladly,Used to show willingness or pleasure.,adverb,Ich helfe dir gerne.,I am happy to help you.,spoken-common-adverb,1
+immer,,always,At all times.,adverb,Er kommt immer puenktlich.,He always arrives on time.,spoken-common,1
+oft,,often,Many times.,adverb,Wir gehen oft spazieren.,We often go for a walk.,spoken-common,1
+gestern,,yesterday,The day before today.,adverb,Gestern war ich zu Hause.,Yesterday I was at home.,spoken-common-time,1
+da,,there,In that place or in that case.,adverb,Ich bin gleich da.,I will be there right away.,spoken-common-place,1
+dort,,over there,In that place over there.,adverb,Dort steht mein Auto.,My car is standing over there.,spoken-common-place,1
+wo,,where,Used to ask about place.,question-word,Wo ist mein Handy?,Where is my phone?,spoken-common-question,1
+wie,,how,Used to ask about manner or condition.,question-word,Wie geht es dir?,How are you?,spoken-common-question,1
+was,,what,Used to ask about a thing or action.,question-word,Was machst du?,What are you doing?,spoken-common-question,1
+wer,,who,Used to ask about a person.,question-word,Wer ist das?,Who is that?,spoken-common-question,1
+warum,,why,Used to ask for a reason.,question-word,Warum bist du spaet?,Why are you late?,spoken-common-question,1
+wann,,when,Used to ask about time.,question-word,Wann kommst du?,When are you coming?,spoken-common-question,1
+wohin,,where to,Used to ask about destination.,question-word,Wohin gehst du jetzt?,Where are you going now?,spoken-common-question,1
+woher,,where from,Used to ask about origin.,question-word,Woher kennst du ihn?,Where do you know him from?,spoken-common-question,2
+an,,at,Preposition for contact or location near something.,preposition,Ich bin am Fenster.,I am at the window.,spoken-common-preposition,1
+bei,,at,Preposition for being with someone or at a place.,preposition,Ich bin bei meiner Familie.,I am with my family.,spoken-common-preposition,1
+nach,,after,Preposition for after or toward some places.,preposition,Nach der Arbeit gehe ich nach Hause.,After work I go home.,spoken-common-preposition,1
+ueber,,about,Preposition for topic or position over something.,preposition,Wir reden ueber das Problem.,We are talking about the problem.,spoken-common-preposition,1
+unter,,under,Preposition for a lower position.,preposition,Die Tasche ist unter dem Tisch.,The bag is under the table.,spoken-common-preposition,1
+vor,,in front of,Preposition for position before something.,preposition,Ich warte vor dem Haus.,I am waiting in front of the house.,spoken-common-preposition,1
+hinter,,behind,Preposition for position at the back.,preposition,Das Auto steht hinter dem Haus.,The car is behind the house.,spoken-common-preposition,1
+neben,,next to,Preposition for a nearby position.,preposition,Ich sitze neben dir.,I am sitting next to you.,spoken-common-preposition,1
+zwischen,,between,Preposition for a middle position.,preposition,Der Bus steht zwischen zwei Autos.,The bus is between two cars.,spoken-common-preposition,1
+gegen,,around,Preposition for opposition or approximate time.,preposition,Wir treffen uns gegen acht.,We are meeting around eight.,spoken-common-preposition,2
+ohne,,without,Preposition for absence of something.,preposition,Ich gehe nicht ohne mein Handy.,I am not going without my phone.,spoken-common-preposition,1
+um,,around,Preposition for time or movement around.,preposition,Der Zug faehrt um neun.,The train leaves at nine.,spoken-common-preposition,1
+durch,,through,Preposition for movement from one side to another.,preposition,Wir gehen durch den Park.,We are walking through the park.,spoken-common-preposition,1
+dieser,,this,Determiner for something near the speaker.,determiner,Dieser Platz ist frei.,This seat is free.,spoken-common-determiner,1
+jeder,,every,Determiner for all items one by one.,determiner,Jeder Tag ist anders.,Every day is different.,spoken-common-determiner,1
+alle,,all,Refers to all people or things in a group.,determiner,Alle sind schon hier.,Everyone is already here.,spoken-common-determiner,1
+etwas,,something,An unknown or unspecified thing.,pronoun,Ich brauche etwas Wasser.,I need some water.,spoken-common-pronoun,1
+nichts,,nothing,No thing at all.,pronoun,Heute passiert nichts.,Nothing is happening today.,spoken-common-pronoun,1
+unser,,our,Possessive word for something belonging to us.,determiner,Das ist unser Haus.,That is our house.,spoken-common-determiner,1
+euer,,your,Possessive word for something belonging to you all.,determiner,Ist das euer Platz?,Is that your seat?,spoken-common-determiner,1
+dann,,then,After that or in that case.,adverb,Ich esse dann komme ich.,I will eat then I will come.,spoken-common-adverb,1
+selbst,,self,Used to emphasize the person or thing.,particle,Das mache ich selbst.,I am doing that myself.,spoken-common-particle,2
+sein,,to be,To exist or have a state.,verb,Ich will hier sein.,I want to be here.,spoken-common-verb,1
+haben,,to have,To possess or hold something.,verb,Wir haben heute Zeit.,We have time today.,spoken-common-verb,1
+werden,,to become,To change into a new state or form the future.,verb,Es wird bald dunkel.,It will get dark soon.,spoken-common-verb,2
+koennen,,can,To be able to do something.,verb,Ich kann heute arbeiten.,I can work today.,spoken-common-modal,1
+muessen,,must,To be required to do something.,verb,Wir muessen jetzt gehen.,We must go now.,spoken-common-modal,1
+wollen,,to want,To wish to do or have something.,verb,Ich will Kaffee.,I want coffee.,spoken-common-modal,1
+sollen,,should,To be expected or supposed to do something.,verb,Du sollst jetzt lernen.,You should study now.,spoken-common-modal,2
+duerfen,,may,To have permission to do something.,verb,Darf ich hier sitzen?,May I sit here?,spoken-common-modal,1
+moegen,,to like,To find something pleasant.,verb,Ich mag diesen Film.,I like this film.,spoken-common-modal,1
+machen,,to do,To perform an action.,verb,Was machst du heute?,What are you doing today?,spoken-common,1
+gehen,,to go,To move from one place to another.,verb,Wir gehen nach Hause.,We are going home.,spoken-common,1
+kommen,,to come,To move toward a place.,verb,Er kommt spaet.,He comes late.,spoken-common,1
+sagen,,to say,To speak words to someone.,verb,Sag mir die Antwort.,Tell me the answer.,spoken-common-verb,1
+sehen,,to see,To notice with the eyes.,verb,Ich sehe den Hund.,I see the dog.,spoken-common,1
+geben,,to give,To hand something to someone.,verb,Ich gebe dir das Buch.,I give you the book.,spoken-common,2
+nehmen,,to take,To get something into your hand.,verb,Nimm bitte den Stuhl.,Please take the chair.,spoken-common,2
+wissen,,to know,To have knowledge about something.,verb,Ich weiss die Antwort nicht.,I do not know the answer.,spoken-common-verb,1
+denken,,to think,To use the mind or have an opinion.,verb,Ich denke an morgen.,I am thinking about tomorrow.,spoken-common-verb,1
+finden,,to find,To discover something.,verb,Ich finde den Schluessel.,I find the key.,spoken-common,2
+bleiben,,to stay,To remain in a place or state.,verb,Wir bleiben heute zu Hause.,We are staying home today.,spoken-common-verb,1
+brauchen,,to need,To require something.,verb,Wir brauchen mehr Zeit.,We need more time.,spoken-common,1
+reden,,to talk,To speak in conversation.,verb,Wir reden spaeter darueber.,We will talk about it later.,spoken-common-verb,1
+sprechen,,to speak,To say words aloud.,verb,Sie spricht sehr langsam.,She speaks very slowly.,spoken-common,1
+fragen,,to ask,To request information.,verb,Sie fragt den Lehrer.,She asks the teacher.,spoken-common,1
+antworten,,to answer,To reply to a question.,verb,Er antwortet sofort.,He answers at once.,spoken-common,2
+hoeren,,to hear,To notice sound with the ears.,verb,Wir hoeren Musik.,We hear music.,spoken-common,1
+lernen,,to learn,To gain knowledge or skill.,verb,Ich lerne jeden Tag.,I learn every day.,spoken-common,1
+arbeiten,,to work,To do a job or task.,verb,Er arbeitet in der Stadt.,He works in the city.,spoken-common-verb,1
+wohnen,,to live,To have your home in a place.,verb,Wir wohnen in Wien.,We live in Vienna.,spoken-common,1
+leben,,to live,To be alive or exist.,verb,Sie lebt allein.,She lives alone.,spoken-common,2
+spielen,,to play,To take part in a game or playful activity.,verb,Die Kinder spielen draussen.,The children are playing outside.,spoken-common-verb,1
+essen,,to eat,To consume food.,verb,Wir essen zusammen.,We eat together.,spoken-common,1
+trinken,,to drink,To take liquid into the mouth.,verb,Wir trinken Kaffee.,We drink coffee.,spoken-common,1
+kaufen,,to buy,To pay money for something.,verb,Ich kaufe Brot.,I buy bread.,spoken-common,1
+zahlen,,to pay,To give money for something.,verb,Ich zahle mit Karte.,I pay by card.,spoken-common,1
+bringen,,to bring,To carry something to a place.,verb,Ich bringe dir das Buch.,I am bringing you the book.,spoken-common-verb,1
+lassen,,to let,To allow or leave something.,verb,Lass das Fenster offen.,Leave the window open.,spoken-common-verb,2
+suchen,,to look for,To try to find something.,verb,Ich suche mein Handy.,I am looking for my phone.,spoken-common-verb,1
+fahren,,to travel,To go by vehicle or drive.,verb,Wir fahren mit dem Zug.,We are traveling by train.,spoken-common-verb,1
+meinen,,to mean,To express an opinion or intention.,verb,Was meinst du damit?,What do you mean by that?,spoken-common-verb,2
+Zeit,die,time,Measured passing of moments.,noun,Ich habe keine Zeit.,I have no time.,spoken-common,1
+Jahr,das,year,A period of twelve months.,noun,Das Jahr geht schnell vorbei.,The year passes quickly.,spoken-common,1
+Tag,der,day,A period of twenty four hours.,noun,Der Tag ist lang.,The day is long.,spoken-common,1
+Woche,die,week,A period of seven days.,noun,Die Woche ist kurz.,The week is short.,spoken-common,1
+Monat,der,month,One of twelve parts of a year.,noun,Dieser Monat ist stressig.,This month is stressful.,spoken-common,2
+Mensch,der,person,A human being.,noun,Der Mensch vor dir ist mein Lehrer.,The person in front of you is my teacher.,spoken-common-noun,1
+Frau,die,woman,An adult female person.,noun,Die Frau arbeitet im Buero.,The woman works in the office.,spoken-common,1
+Mann,der,man,An adult male person.,noun,Der Mann wartet hier.,The man is waiting here.,spoken-common,1
+Kind,das,child,A young person.,noun,Das Kind lacht.,The child laughs.,spoken-common,1
+Familie,die,family,A group of close relatives.,noun,Meine Familie ist gross.,My family is big.,spoken-common,1
+Freund,der,friend,A person you like and trust.,noun,Mein Freund wohnt in Berlin.,My friend lives in Berlin.,spoken-common,1
+Arbeit,die,work,Activity done for a job.,noun,Die Arbeit ist schwer.,The work is hard.,spoken-common,1
+Problem,das,problem,Something difficult that needs a solution.,noun,Wir haben ein kleines Problem.,We have a small problem.,spoken-common-noun,1
+Frage,die,question,Words used to ask for information.,noun,Ich habe noch eine Frage.,I still have one question.,spoken-common-noun,1
+Antwort,die,answer,A reply to a question.,noun,Die Antwort ist richtig.,The answer is correct.,spoken-common-noun,1
+Name,der,name,The word used for a person or thing.,noun,Wie ist dein Name?,What is your name?,spoken-common-noun,1
+Sache,die,thing,An object or issue.,noun,Das ist eine wichtige Sache.,That is an important thing.,spoken-common-noun,1
+Platz,der,seat,A place or seat.,noun,Ist dieser Platz frei?,Is this seat free?,spoken-common-noun,1
+Haus,das,house,A building where people live.,noun,Das Haus ist alt.,The house is old.,spoken-common,1
+Wohnung,die,apartment,A place where someone lives.,noun,Unsere Wohnung ist klein.,Our apartment is small.,spoken-common-noun,1
+Zimmer,das,room,A part of a building inside walls.,noun,Mein Zimmer ist klein.,My room is small.,spoken-common,1
+Stadt,die,city,A large town with many people.,noun,Die Stadt ist laut.,The city is loud.,spoken-common,1
+Strasse,die,street,A public road in a town.,noun,Die Strasse ist voll.,The street is full.,spoken-common,1
+Weg,der,way,A route or direction.,noun,Das ist der richtige Weg.,That is the right way.,spoken-common,1
+Auto,das,car,A road vehicle with an engine.,noun,Das Auto ist neu.,The car is new.,spoken-common,1
+Zug,der,train,A vehicle that runs on rails.,noun,Der Zug kommt gleich.,The train arrives soon.,spoken-common,1
+Bus,der,bus,A large road vehicle for many people.,noun,Der Bus ist spaet.,The bus is late.,spoken-common,1
+Schule,die,school,A place where people learn.,noun,Die Schule beginnt um acht.,School starts at eight.,spoken-common,1
+Lehrer,der,teacher,A person who teaches students.,noun,Der Lehrer ist nett.,The teacher is nice.,spoken-common,1
+Student,der,student,A person who studies.,noun,Der Student liest viel.,The student reads a lot.,spoken-common,1
+Buch,das,book,A written work with pages.,noun,Das Buch ist interessant.,The book is interesting.,spoken-common,1
+Handy,das,phone,A mobile phone.,noun,Mein Handy ist im Auto.,My phone is in the car.,spoken-common-noun,1
+Geld,das,money,What you use to pay for things.,noun,Ich habe heute wenig Geld.,I have little money today.,spoken-common-noun,1
+Essen,das,food,Things to eat.,noun,Das Essen ist schon fertig.,The food is already ready.,spoken-common-noun,1
+Wasser,das,water,A clear liquid for drinking.,noun,Ich trinke Wasser.,I drink water.,spoken-common,1
+Kaffee,der,coffee,A dark hot drink.,noun,Der Kaffee ist heiss.,The coffee is hot.,spoken-common,1
+Brot,das,bread,A baked food made from flour.,noun,Das Brot ist frisch.,The bread is fresh.,spoken-common,1
+Musik,die,music,Organized sound for listening.,noun,Ich hoere gerne Musik.,I like listening to music.,spoken-common-noun,1
+Film,der,movie,A story shown on a screen.,noun,Der Film ist sehr gut.,The movie is very good.,spoken-common-noun,1
+Sprache,die,language,A system of words people use to communicate.,noun,Deutsch ist eine schwere Sprache.,German is a difficult language.,spoken-common-noun,2
+Leute,die,people,Several people in general.,noun,Viele Leute warten hier.,Many people are waiting here.,spoken-common-noun,1
+Welt,die,world,The earth and the people on it.,noun,Die Welt ist gross.,The world is big.,spoken-common-noun,1
+gut,,good,Of high quality.,adjective,Das Essen ist gut.,The food is good.,spoken-common,1
+schlecht,,bad,Of low quality.,adjective,Das Wetter ist schlecht.,The weather is bad.,spoken-common,1
+gross,,big,Large in size.,adjective,Das Haus ist gross.,The house is big.,spoken-common,1
+klein,,small,Little in size.,adjective,Der Hund ist klein.,The dog is small.,spoken-common,1
+neu,,new,Recently made or bought.,adjective,Mein Auto ist neu.,My car is new.,spoken-common,1
+alt,,old,Having existed a long time.,adjective,Die Stadt ist alt.,The city is old.,spoken-common,1
+jung,,young,Having lived only a short time.,adjective,Das Kind ist noch jung.,The child is still young.,spoken-common-adjective,1
+wichtig,,important,Having strong value or meaning.,adjective,Diese Frage ist wichtig.,This question is important.,spoken-common-adjective,1
+richtig,,correct,Matching the truth or the right answer.,adjective,Die Antwort ist richtig.,The answer is correct.,spoken-common-adjective,1
+falsch,,wrong,Not correct.,adjective,Das ist die falsche Strasse.,That is the wrong street.,spoken-common-adjective,1
+einfach,,easy,Not difficult to do.,adjective,Die Aufgabe ist einfach.,The task is easy.,spoken-common,1
+schwer,,difficult,Hard to do or carry.,adjective,Die Frage ist schwer.,The question is difficult.,spoken-common,1
+schoen,,beautiful,Pleasing to look at.,adjective,Der Garten ist schoen.,The garden is beautiful.,spoken-common,1
+teuer,,expensive,Costing a lot of money.,adjective,Das Auto ist zu teuer.,The car is too expensive.,spoken-common-adjective,1
+billig,,cheap,Costing little money.,adjective,Das Brot ist billig.,The bread is cheap.,spoken-common-adjective,1
+schnell,,fast,Moving with high speed.,adjective,Der Zug ist sehr schnell.,The train is very fast.,spoken-common,2
+langsam,,slow,Moving or happening with little speed.,adjective,Bitte sprich langsam.,Please speak slowly.,spoken-common-adjective,1
+spaet,,late,Happening after the usual time.,adjective,Es ist schon spaet.,It is already late.,spoken-common,2
+frueh,,early,Happening before the usual time.,adjective,Ich stehe frueh auf.,I get up early.,spoken-common,2
+laut,,loud,Making a strong sound.,adjective,Die Musik ist zu laut.,The music is too loud.,spoken-common-adjective,1
+leise,,quiet,Making little sound.,adjective,Bitte sei leise.,Please be quiet.,spoken-common-adjective,1
+klar,,clear,Easy to understand or see.,adjective,Die Antwort ist klar.,The answer is clear.,spoken-common-adjective,1
+frei,,free,Not occupied or not busy.,adjective,Der Platz ist frei.,The seat is free.,spoken-common-adjective,1
+fertig,,ready,Prepared or completed.,adjective,Ich bin jetzt fertig.,I am finished now.,spoken-common-adjective,1
+zusammen,,together,With one another in the same group.,adverb,Wir gehen zusammen nach Hause.,We are going home together.,spoken-common-adverb,1
+allein,,alone,Without other people.,adverb,Er wohnt allein.,He lives alone.,spoken-common-adverb,1
+sofort,,right away,Without delay.,adverb,Ich komme sofort.,I am coming right away.,spoken-common-adverb,1
+direkt,,directly,Straight away or without detour.,adverb,Der Bus faehrt direkt zur Stadt.,The bus goes directly to the city.,spoken-common-adverb,1

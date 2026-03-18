@@ -3,9 +3,12 @@ from __future__ import annotations
 import argparse
 import sqlite3
 import sys
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import parse_qs, urlparse
 from datetime import UTC, datetime
 from pathlib import Path
 
+from app import ack_server
 from app import db, notifier, selector
 from app.config import Settings, load_settings
 from app.models import WordRecord
@@ -62,6 +65,17 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser = subparsers.add_parser("run-once", help="Select a card and send one notification")
     run_parser.add_argument("--dry-run", action="store_true")
 
+    subparsers.add_parser(
+        "open-pending",
+        help="Open the pending study page for the selected profile and unblock the next notification",
+    )
+
+    subparsers.add_parser("serve-ack-server", help=argparse.SUPPRESS)
+
+    ack_parser = subparsers.add_parser("ack-notification", help=argparse.SUPPRESS)
+    ack_parser.add_argument("--card-id", type=int, required=True)
+    ack_parser.add_argument("--page-path", required=True)
+
     return parser
 
 
@@ -95,6 +109,16 @@ def dispatch(args: argparse.Namespace, settings: Settings) -> int:
         return _notify_word(connection, word, settings, dry_run=args.dry_run, persist=False)
 
     if args.command == "run-once":
+        pending = db.fetch_pending_notification(connection, settings.profile_name)
+        if pending is not None:
+            pending_word = db.fetch_word_by_id(connection, pending.card_id)
+            pending_term = pending_word.display_term if pending_word else f"id={pending.card_id}"
+            print(
+                f"{_timestamp()} RUN_SKIPPED profile='{settings.profile_name}' "
+                f"reason='pending_ack' term='{pending_term}'",
+                flush=True,
+            )
+            return 0
         chosen_word = selector.choose_next_word(
             connection,
             min_hours_between_repeats=settings.min_hours_between_repeats,
@@ -103,6 +127,15 @@ def dispatch(args: argparse.Namespace, settings: Settings) -> int:
             print("No active cards available. Import or enrich data first.", file=sys.stderr)
             return 1
         return _notify_word(connection, chosen_word, settings, dry_run=args.dry_run, persist=True)
+
+    if args.command == "open-pending":
+        return _open_pending_notification(connection, settings)
+
+    if args.command == "serve-ack-server":
+        return _serve_ack_server(settings)
+
+    if args.command == "ack-notification":
+        return _acknowledge_notification(connection, settings, card_id=args.card_id, page_path=Path(args.page_path))
 
     raise ValueError(f"Unsupported command: {args.command}")
 
@@ -171,10 +204,25 @@ def _notify_word(
 
     try:
         print(f"{_timestamp()} RUN_START term='{word.display_term}' profile='{settings.profile_name}'", flush=True)
-        backend = notifier.send_notification(settings, title, subtitle, body, page_path=page_path)
+        if persist and word.id:
+            ack_server.ensure_ack_server(settings)
+        backend = notifier.send_notification(
+            settings,
+            title,
+            subtitle,
+            body,
+            page_path=page_path,
+        )
         if persist and word.id:
             db.mark_word_shown(connection, word.id)
             db.record_notification_result(connection, word.id, "sent", body)
+            if backend != "open-direct":
+                db.set_pending_notification(
+                    connection,
+                    settings.profile_name,
+                    card_id=word.id,
+                    page_path=str(page_path),
+                )
     except notifier.NotificationError as exc:
         if persist and word.id:
             db.record_notification_result(connection, word.id, "failed", str(exc))
@@ -189,6 +237,120 @@ def _notify_word(
         f"{_timestamp()} RUN_SENT term='{word.display_term}' profile='{settings.profile_name}' backend='{backend}'",
         flush=True,
     )
+    return 0
+
+
+def _acknowledge_notification(
+    connection: sqlite3.Connection,
+    settings: Settings,
+    *,
+    card_id: int,
+    page_path: Path,
+) -> int:
+    notifier.open_page(page_path)
+    acknowledged = db.acknowledge_pending_notification(connection, settings.profile_name, card_id)
+    if acknowledged:
+        db.record_notification_result(connection, card_id, "acknowledged", str(page_path))
+        print(
+            f"{_timestamp()} ACK_RECORDED profile='{settings.profile_name}' card_id='{card_id}'",
+            flush=True,
+        )
+    else:
+        print(
+            f"{_timestamp()} ACK_IGNORED profile='{settings.profile_name}' card_id='{card_id}'",
+            flush=True,
+        )
+    return 0
+
+
+def _open_pending_notification(connection: sqlite3.Connection, settings: Settings) -> int:
+    pending = db.fetch_pending_notification(connection, settings.profile_name)
+    if pending is None:
+        print(f"{_timestamp()} OPEN_PENDING_NONE profile='{settings.profile_name}'", flush=True)
+        return 0
+
+    page_path = Path(pending.page_path) if pending.page_path else None
+    if page_path is None:
+        print(
+            f"{_timestamp()} OPEN_PENDING_FAILED profile='{settings.profile_name}' "
+            f"card_id='{pending.card_id}' reason='missing_page_path'",
+            file=sys.stderr,
+            flush=True,
+        )
+        return 1
+
+    notifier.open_page(page_path)
+    db.acknowledge_pending_notification(connection, settings.profile_name, pending.card_id)
+    db.record_notification_result(connection, pending.card_id, "acknowledged", str(page_path))
+    print(
+        f"{_timestamp()} OPEN_PENDING profile='{settings.profile_name}' card_id='{pending.card_id}'",
+        flush=True,
+    )
+    return 0
+
+
+def _serve_ack_server(settings: Settings) -> int:
+    class AckHandler(BaseHTTPRequestHandler):
+        def do_GET(self) -> None:  # noqa: N802
+            parsed = urlparse(self.path)
+            if parsed.path == "/health":
+                self._send_response(200, b"ok")
+                return
+            if parsed.path != "/ack":
+                self._send_response(404, b"not-found")
+                return
+
+            query = parse_qs(parsed.query)
+            profile = query.get("profile", [""])[0]
+            card_id_raw = query.get("card_id", [""])[0]
+            if profile != settings.profile_name or not card_id_raw.isdigit():
+                self._send_response(400, b"bad-request")
+                return
+
+            card_id = int(card_id_raw)
+            ack_connection = db.connect(settings.db_path)
+            db.init_db(ack_connection)
+            acknowledged = db.acknowledge_pending_notification(ack_connection, settings.profile_name, card_id)
+            if acknowledged:
+                db.record_notification_result(ack_connection, card_id, "acknowledged", "page_load")
+                print(
+                    f"{_timestamp()} ACK_RECORDED profile='{settings.profile_name}' "
+                    f"card_id='{card_id}' source='page_load'",
+                    flush=True,
+                )
+            else:
+                print(
+                    f"{_timestamp()} ACK_IGNORED profile='{settings.profile_name}' "
+                    f"card_id='{card_id}' source='page_load'",
+                    flush=True,
+                )
+            ack_connection.close()
+            self._send_response(200, b"acknowledged")
+
+        def log_message(self, format: str, *args: object) -> None:
+            return
+
+        def _send_response(self, status: int, body: bytes) -> None:
+            self.send_response(status)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(body)
+
+    server = ThreadingHTTPServer(
+        (ack_server.ACK_SERVER_HOST, ack_server.ack_server_port(settings.profile_name)),
+        AckHandler,
+    )
+    print(
+        f"{_timestamp()} ACK_SERVER_LISTENING profile='{settings.profile_name}' "
+        f"port='{ack_server.ack_server_port(settings.profile_name)}'",
+        flush=True,
+    )
+    try:
+        server.serve_forever()
+    finally:
+        server.server_close()
     return 0
 
 

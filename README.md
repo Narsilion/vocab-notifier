@@ -58,7 +58,7 @@ pip install -e .
 cp .env.example .env
 ```
 
-4. Keep [profiles/german/profile.json](/Users/darkcreation/Documents/git_repos/vocab-notifier/profiles/german/profile.json) and [data/german.csv](/Users/darkcreation/Documents/git_repos/vocab-notifier/data/german.csv).
+4. Keep [profiles/german/profile.json](/Users/darkcreation/Documents/git_repos/vocab-notifier/profiles/german/profile.json) and the default German starter file [data/german_spoken_common_200.csv](/Users/darkcreation/Documents/git_repos/vocab-notifier/data/german_spoken_common_200.csv).
 5. Decide whether you want to keep your learning state:
    - If yes, copy `profiles/german/vocab.db` from the old laptop.
    - If no, create a fresh database and import the German CSV:
@@ -105,7 +105,8 @@ Notifications appear in macOS:
 
 - as a banner in the top-right corner
 - in Notification Center if you miss the banner
-- clicking the notification or `Open Card` opens the generated HTML page
+- clicking `Show` opens the generated HTML study page
+- opening the study page marks that card as read and unblocks the next notification
 
 The study page includes:
 
@@ -139,6 +140,14 @@ Send a real notification:
 ```bash
 ./vn --profile german run-once
 ```
+
+Open the currently pending study page and unblock the next scheduled card:
+
+```bash
+./vn --profile german open-pending
+```
+
+For scheduled hourly runs, the notifier will skip sending a new card if the last scheduled card has not been opened yet. `open-pending` remains available as a fallback if you want to reopen the pending page manually.
 
 Inspect stored cards:
 
@@ -181,9 +190,12 @@ Rules:
 
 Sample files:
 
+- [data/german_spoken_common_200.csv](/Users/darkcreation/Documents/git_repos/vocab-notifier/data/german_spoken_common_200.csv)
 - [data/german.csv](/Users/darkcreation/Documents/git_repos/vocab-notifier/data/german.csv)
 - [data/spanish.csv](/Users/darkcreation/Documents/git_repos/vocab-notifier/data/spanish.csv)
 - [data/english.csv](/Users/darkcreation/Documents/git_repos/vocab-notifier/data/english.csv)
+
+The German profile now defaults to the 200-word spoken-frequency starter list. The older `data/german.csv` file remains available as a legacy alternate set.
 
 ## Rendering rules
 

@@ -27,3 +27,11 @@ class WordRecord:
         if self.display_prefix:
             return f"{self.display_prefix} {self.term}"
         return self.term
+
+
+@dataclass(slots=True)
+class PendingNotification:
+    profile_name: str
+    card_id: int
+    page_path: str | None
+    shown_at: str

@@ -76,7 +76,7 @@ Bank,,bank,,,Geh bitte zur Bank!,Please go to the bank.,"bulk-import,tatoeba-exa
 Banknote,,bank note,,,Bitte wechsel diese Banknoten in Münzen.,Please change these bills into coins.,"bulk-import,tatoeba-example-short",,tatoeba:679343
 Bar,,cash,,,Karte oder bar?,Cash or card?,"bulk-import,tatoeba-example-short",,tatoeba:13796284
 Bargeld,,cash,,,Benutze Bargeld.,Use cash.,"bulk-import,tatoeba-example-short",,tatoeba:13480886
-Barren,,bar,,,"Das Museum stellte historische Barren aus, die aus einer gesunkenen spanischen Galeone geborgen worden waren.",The museum displayed historic bullion recovered from a sunken Spanish galleon.,"bulk-import,tatoeba-example-short",,tatoeba:13637324
+Barren,der,bullion bar,A solid bar of precious metal.,noun,"Das Museum stellte historische Barren aus, die aus einer gesunkenen spanischen Galeone geborgen worden waren.",The museum displayed historic bullion bars recovered from a sunken Spanish galleon.,"bulk-import,tatoeba-example-short",,tatoeba:13637324
 Bart,,beard,,,Ich habe keinen Bart.,I don't have a beard.,"bulk-import,tatoeba-example-short",,tatoeba:10125272
 Basis,,basis,,,Jeder Vektorraum hat eine Basis.,Every vector space has a basis.,"bulk-import,tatoeba-example-short",,tatoeba:2125960
 bauen,,construct,,,Was bauen sie?,What are they building?,"bulk-import,tatoeba-example-short",,tatoeba:12389621
