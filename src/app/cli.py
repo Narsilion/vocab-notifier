@@ -206,12 +206,20 @@ def _notify_word(
         print(f"{_timestamp()} RUN_START term='{word.display_term}' profile='{settings.profile_name}'", flush=True)
         if persist and word.id:
             ack_server.ensure_ack_server(settings)
+        click_command = None
+        if persist and word.id:
+            click_command = notifier.build_acknowledgement_command(
+                settings,
+                card_id=word.id,
+                page_path=page_path,
+            )
         backend = notifier.send_notification(
             settings,
             title,
             subtitle,
             body,
             page_path=page_path,
+            click_command=click_command,
         )
         if persist and word.id:
             db.mark_word_shown(connection, word.id)

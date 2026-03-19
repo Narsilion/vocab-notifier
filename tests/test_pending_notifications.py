@@ -6,6 +6,7 @@ from pathlib import Path
 from app import db
 from app.cli import dispatch
 from app.config import Settings
+from app.notifier import NotificationError
 
 
 def _settings(tmp_path: Path) -> Settings:
@@ -161,3 +162,149 @@ def test_open_pending_clears_pending_and_opens_page(monkeypatch, tmp_path: Path)
     assert dispatch(args, settings) == 0
     assert db.fetch_pending_notification(connection, settings.profile_name) is None
     assert opened == [Path("/tmp/haus.html")]
+
+
+def test_run_once_passes_acknowledgement_command_to_notification_backend(
+    monkeypatch, tmp_path: Path
+) -> None:
+    settings = _settings(tmp_path)
+    connection = db.connect(settings.db_path)
+    db.init_db(connection)
+    db.upsert_word(
+        connection,
+        {
+            "term": "Haus",
+            "display_prefix": "das",
+            "translation_text": "house",
+            "explanation_text": "A building",
+            "part_of_speech": "noun",
+            "example_source": "Das Haus ist alt.",
+            "example_target": "The house is old.",
+            "tags": "test",
+            "source": "test",
+            "difficulty": 1,
+        },
+    )
+
+    captured: dict[str, str | Path | None] = {}
+
+    monkeypatch.setattr("app.ack_server.ensure_ack_server", lambda settings: None)
+
+    def fake_send_notification(
+        settings: Settings,
+        title: str,
+        subtitle: str,
+        body: str,
+        *,
+        page_path: Path | None = None,
+        click_command: str | None = None,
+    ) -> str:
+        captured["page_path"] = page_path
+        captured["click_command"] = click_command
+        return "terminal-notifier-execute"
+
+    monkeypatch.setattr("app.notifier.send_notification", fake_send_notification)
+
+    args = argparse.Namespace(command="run-once", dry_run=False, profile="german")
+    assert dispatch(args, settings) == 0
+
+    page_path = captured["page_path"]
+    click_command = captured["click_command"]
+    assert isinstance(page_path, Path)
+    assert isinstance(click_command, str)
+    assert str(page_path) in click_command
+    assert "ack-notification" in click_command
+    assert db.fetch_pending_notification(connection, settings.profile_name) is not None
+
+
+def test_run_once_does_not_set_pending_when_backend_opens_page_directly(
+    monkeypatch, tmp_path: Path
+) -> None:
+    settings = _settings(tmp_path)
+    connection = db.connect(settings.db_path)
+    db.init_db(connection)
+    db.upsert_word(
+        connection,
+        {
+            "term": "Haus",
+            "display_prefix": "das",
+            "translation_text": "house",
+            "explanation_text": "A building",
+            "part_of_speech": "noun",
+            "example_source": "Das Haus ist alt.",
+            "example_target": "The house is old.",
+            "tags": "test",
+            "source": "test",
+            "difficulty": 1,
+        },
+    )
+
+    monkeypatch.setattr("app.ack_server.ensure_ack_server", lambda settings: None)
+    monkeypatch.setattr("app.notifier.send_notification", lambda *args, **kwargs: "open-direct")
+
+    args = argparse.Namespace(command="run-once", dry_run=False, profile="german")
+    assert dispatch(args, settings) == 0
+
+    assert db.fetch_pending_notification(connection, settings.profile_name) is None
+    rows = connection.execute(
+        """
+        SELECT status
+        FROM notification_log
+        ORDER BY id DESC
+        LIMIT 1
+        """
+    ).fetchall()
+    assert [row["status"] for row in rows] == ["sent"]
+
+
+def test_run_once_records_failure_without_marking_word_shown(monkeypatch, tmp_path: Path) -> None:
+    settings = _settings(tmp_path)
+    connection = db.connect(settings.db_path)
+    db.init_db(connection)
+    db.upsert_word(
+        connection,
+        {
+            "term": "Haus",
+            "display_prefix": "das",
+            "translation_text": "house",
+            "explanation_text": "A building",
+            "part_of_speech": "noun",
+            "example_source": "Das Haus ist alt.",
+            "example_target": "The house is old.",
+            "tags": "test",
+            "source": "test",
+            "difficulty": 1,
+        },
+    )
+    word_before = db.fetch_all_words(connection, limit=1)[0]
+
+    monkeypatch.setattr("app.ack_server.ensure_ack_server", lambda settings: None)
+
+    def raise_notification_error(*args, **kwargs):  # type: ignore[no-untyped-def]
+        raise NotificationError("backend exploded")
+
+    monkeypatch.setattr("app.notifier.send_notification", raise_notification_error)
+
+    args = argparse.Namespace(command="run-once", dry_run=False, profile="german")
+
+    try:
+        dispatch(args, settings)
+    except NotificationError as exc:
+        assert "backend exploded" in str(exc)
+    else:
+        raise AssertionError("Expected NotificationError from send_notification")
+
+    word_after = db.fetch_word_by_id(connection, word_before.id)
+    assert word_after is not None
+    assert word_after.times_shown == 0
+    assert word_after.last_shown_at is None
+    assert db.fetch_pending_notification(connection, settings.profile_name) is None
+    rows = connection.execute(
+        """
+        SELECT status, message
+        FROM notification_log
+        ORDER BY id DESC
+        LIMIT 1
+        """
+    ).fetchall()
+    assert [(row["status"], row["message"]) for row in rows] == [("failed", "backend exploded")]

@@ -50,6 +50,18 @@ def send_notification(
 ) -> str:
     backend_errors: list[str] = []
     if click_command and page_path is not None:
+        terminal_result = _send_terminal_notification(
+            title,
+            subtitle,
+            body,
+            page_path,
+            click_command=click_command,
+        )
+        if terminal_result is True:
+            return "terminal-notifier-execute"
+        if isinstance(terminal_result, str):
+            backend_errors.append(f"terminal-notifier: {terminal_result}")
+
         swift_result = _send_swift_notification(
             settings,
             title,
@@ -62,18 +74,6 @@ def send_notification(
             return "swift-helper-execute"
         if isinstance(swift_result, str):
             backend_errors.append(f"swift-helper: {swift_result}")
-
-        terminal_result = _send_terminal_notification(
-            title,
-            subtitle,
-            body,
-            page_path,
-            click_command=click_command,
-        )
-        if terminal_result is True:
-            return "terminal-notifier-execute"
-        if isinstance(terminal_result, str):
-            backend_errors.append(f"terminal-notifier: {terminal_result}")
 
     if page_path is not None:
         terminal_result = _send_terminal_notification(title, subtitle, body, page_path)
@@ -165,10 +165,13 @@ def _send_terminal_notification(
         "-group",
         f"vn-{page_path.stem}",
     ]
+    page_url = page_path.resolve().as_uri()
     if click_command:
-        command.extend(["-execute", click_command])
+        # Preserve normal notification-body clicks opening the study page while
+        # still allowing action-button execution where supported.
+        command.extend(["-open", page_url, "-execute", click_command])
     else:
-        command.extend(["-open", page_path.resolve().as_uri()])
+        command.extend(["-open", page_url])
     errors: list[str] = []
     for _ in range(3):
         result = subprocess.run(command, capture_output=True, text=True, check=False)
